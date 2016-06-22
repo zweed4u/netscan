@@ -10,14 +10,18 @@ driver=webdriver.Chrome(driverBin)
 driver.set_page_load_timeout(5)
 
 socket.setdefaulttimeout(5)
-#go to google
-i=21
-while i <256:
-	try:
-		driver.get('http://10.0.120.'+str(i))	
-	except socket.timeout:
-		print 'press escape .',i
-	i+=1
-	time.sleep(5)
+#Class A
+lastOctet=184
+thirdOctet=122
+while thirdOctet<124:
+	while lastOctet <256:
+		try:
+			driver.get('http://10.0.'+str(thirdOctet)+'.'+str(lastOctet))	
+		except socket.timeout:
+			print 'press escape 10.0.'+str(thirdOctet)+'.'+str(lastOctet)
+		lastOctet+=1
+		time.sleep(5)
+	lastOctet=0
+	thirdOctet+=1
 driver.close()
-print
+print 'Scan Complete'
