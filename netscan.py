@@ -11,8 +11,8 @@ driver.set_page_load_timeout(5)
 
 socket.setdefaulttimeout(5)
 #Class A
-lastOctet=184
-thirdOctet=122
+lastOctet=0
+thirdOctet=120
 while thirdOctet<124:
 	while lastOctet <256:
 		try:
