@@ -5,3 +5,9 @@ For some reason I was still unable to see the device on the network. Ignoring th
 I tried to find a way to automate a network scan/sweep. I first recalled a script I developed a while back I used for scraping. It was a bundled javascript and json file for a chrome extension crx file. Using window.location.href, some string manipulation and settimeout a pseudo crawler can easily be created. The problem with this is that the declaration of variables is deterimental to functionality becuase of the script's reinitialization per page reload. This is a nuisance.
 
 Python is my bread and butter. I quickly turned to IDLE to try some few ideas. I first thought of using the requests module but due to the nature of visiting ip addresses, some result in unreachable hosts and therefore contents are inaccessible. I thought of a better way, why not turn to selenium? I would still need to keep a watchful eye on run time but it would automate most of the human element in the process. I downloaded the chrome binary for my webdriver and off I went.  
+
+Unfortunately, in hindsight, the ip address returned a 'requested url was not found'. Upon looking further into the documentation, I would find that my scripts wouldn't do the trick. Instead I needed an appended '/config'. Rather than adjust my script in fear of time constraints, I found that I had been giving incorrect arguments to the nmap command. First running ifconfig to find the correct network to scan I found the inet addr:10.0.120.X. I used this for my sweep.
+
+sudo nmap -sP 10.0.120.0/24
+
+It took a second to get the formatting but with a copy and paste to a text editor, I was able to cntl+f the mac address and found the nmap report for the device.
